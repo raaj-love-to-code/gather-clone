@@ -14,7 +14,7 @@ $(document).ready(() => {
     
     function preload ()
     {
-        this.load.image('sky', '../assets/bg.png');
+        this.load.image('sky', '../../assets/bg.png');
     }
     
     function create ()
