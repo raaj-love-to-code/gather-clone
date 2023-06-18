@@ -1,0 +1,40 @@
+.video-container {
+    width: '100%';
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.side-bar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #193669;
+}
+.topic {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+}
+.members {
+    font-size: 1.5rem;
+    color: rgb(105, 233, 105);
+    cursor: pointer;
+}
+#btnLogout {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: white;
+    background-color: rgb(122, 26, 26);
+    cursor: pointer;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+#btnLogout:hover {
+    background-color: rgb(204, 84, 84);
+}
