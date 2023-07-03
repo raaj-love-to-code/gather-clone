@@ -192,6 +192,7 @@ wss.on('connection', (connection) => {
             login(connection, data.email, true);
             if (!active[data.email]) {connection.email = data.email; console.log('from ',data.email);}
         } else if (data.type === 'disconnect') {
+            console.log('disconnect from base', data);
             disconnect(connection, data.email);
         } else if (data.type === 'msg') {
             msg(connection, data);
@@ -209,6 +210,7 @@ wss.on('connection', (connection) => {
     connection.on('close', () => {
         console.log(connection.email);
         if (connection.email) {
+            console.log('discv from');
             disconnect(connection, connection.email);
         }
     })

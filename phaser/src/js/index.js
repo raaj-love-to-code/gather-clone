@@ -34,7 +34,7 @@ $(document).ready(() => {
     var player2;
     function create ()
     {
-        this.add.image(400,300, 'background');
+        this.add.image(400,200, 'background');
 
         // platforms = this.physics.add.staticGroup();
         // player = this.physics.add.sprite(100, 450, 'dude');

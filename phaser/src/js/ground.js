@@ -182,6 +182,27 @@ $(document).ready(() => {
 
     userData = JSON.parse(userData);
 
+    const setMembers = (userData) => {
+        let activeUserMarkup = ``;
+        let offlineUserMarkup = ``;
+        console.log(userData.activeUsers);
+        userData.activeUsers.forEach((data) => {
+            activeUserMarkup += `<p id="${data}" class="members">${data}</p>`
+        });
+        userData.offlineUsers.forEach((data) => {
+            offlineUserMarkup += `<p class="members">${data}</p>`
+        });
+        $('#online-members-container').html(activeUserMarkup);
+        $('#offline-members-container').html(offlineUserMarkup);
+        userData.activeUsers.forEach((data) => {
+            $(`#${data}`).click(() => {
+                handleClick(data);
+            });
+        });
+    }
+
+    setMembers(userData);
+
     email = userData.email;
 
     conn.onopen = () => console.log('Connection extablished with signaling server');
@@ -199,6 +220,8 @@ $(document).ready(() => {
             handleAnswer(data.answer);
         } else if (data.type === 'candidate') {
             handleCandidate(data.candidate);
+        } else if (data.type === 'disconnect') {
+            window.location.href = 'http://localhost:8000/src/html/gather.html';
         }
     };
 
@@ -260,6 +283,14 @@ $(document).ready(() => {
         }, function (error) { 
             alert("Error when creating an offer", error); 
         });  
+    });
+
+    $('#btnLogout').click(() => {
+        console.log('log out', userData);
+        conn.send(JSON.stringify({
+            type: 'disconnect',
+            email: userData.email
+        }));
     });
 
     function handleOffer(offer, name) { 
